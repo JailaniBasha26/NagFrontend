@@ -1,11 +1,11 @@
 const useConfig = "server";
 let config;
 
-if (useConfig == "dev") {
+if (useConfig === "dev") {
   config = "http://localhost:9090/";
 }
 
-if (useConfig == "server") {
+if (useConfig === "server") {
   config = "https://nagbackend.azurewebsites.net";
 }
 

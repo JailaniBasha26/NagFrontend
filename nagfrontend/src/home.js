@@ -3,19 +3,12 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { InputText } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
-// import { ProductService } from "./service/ProductService";
 import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
-import { FileUpload } from "primereact/fileupload";
-import { Rating } from "primereact/rating";
 import { Toolbar } from "primereact/toolbar";
-import { InputTextarea } from "primereact/inputtextarea";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
-// import { RadioButton } from "DataTable /radiobutton";
-import { InputNumber } from "primereact/inputnumber";
 import { Dialog } from "primereact/dialog";
-import { Tag } from "primereact/tag";
 import { ProgressSpinner } from "primereact/progressspinner";
 
 import axios from "axios";
@@ -33,7 +26,6 @@ export default function Home() {
   const [product, setProduct] = useState(emptyProduct);
   const [submitted, setSubmitted] = useState(false);
   const [deleteProductDialog, setDeleteProductDialog] = useState(false);
-  const [deleteProductsDialog, setDeleteProductsDialog] = useState(false);
   const [globalFilter, setGlobalFilter] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useRef(null);
@@ -47,15 +39,6 @@ export default function Home() {
     fetchGridData();
   }, []);
 
-  const onRowEditComplete = (e) => {
-    let _products = [...studentDetails];
-    let { newData, index } = e;
-
-    _products[index] = newData;
-
-    setStudentDetails(_products);
-  };
-
   const textEditor = (options) => {
     return (
       <InputText
@@ -64,10 +47,6 @@ export default function Home() {
         onChange={(e) => options.editorCallback(e.target.value)}
       />
     );
-  };
-
-  const allowEdit = (rowData) => {
-    return rowData.name !== "Blue Band";
   };
 
   const header = (
@@ -244,10 +223,6 @@ export default function Home() {
     setProduct(emptyProduct);
     setSubmitted(false);
     setProductDialog(true);
-  };
-
-  const confirmDeleteSelected = () => {
-    setDeleteProductsDialog(true);
   };
 
   const leftToolbarTemplate = () => {
