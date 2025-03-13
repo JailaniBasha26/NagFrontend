@@ -108,9 +108,9 @@ export default function Home() {
 
   const saveProduct = () => {
     setSubmitted(true);
-    setIsLoading(true);
     if (product.id != null) {
-      if (product.name.length > 0 && product.dept.length > 0)
+      if (product.name.length > 0 && product.dept.length > 0) {
+        setIsLoading(true);
         axios.post("/updateStudent", product).then((response) => {
           if (response.data) {
             fetchGridData();
@@ -123,8 +123,10 @@ export default function Home() {
             setProductDialog(false);
           }
         });
+      }
     } else {
-      if (product.name.length > 0 && product.dept.length > 0)
+      if (product.name.length > 0 && product.dept.length > 0) {
+        setIsLoading(true);
         axios.post("/createStudentData", product).then((response) => {
           if (response.data) {
             fetchGridData();
@@ -137,6 +139,7 @@ export default function Home() {
             setProductDialog(false);
           }
         });
+      }
     }
   };
 
