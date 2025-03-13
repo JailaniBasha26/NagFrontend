@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Home from "./home";
+import Config from "./config";
+import axios from "axios";
 import reportWebVitals from "./reportWebVitals";
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/saga-blue/theme.css";
@@ -9,10 +12,13 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css"; //icons
 import "primeflex/primeflex.css";
 
+axios.defaults.baseURL = Config;
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Home />
   </React.StrictMode>
 );
 
