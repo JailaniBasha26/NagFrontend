@@ -1,4 +1,4 @@
-const useConfig = "dev";
+const useConfig = "server";
 let config;
 
 if (useConfig === "dev") {
