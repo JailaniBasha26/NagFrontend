@@ -1,4 +1,4 @@
-const useConfig = "ngrok";
+const useConfig = "dev";
 let config;
 
 if (useConfig === "dev") {
@@ -6,7 +6,7 @@ if (useConfig === "dev") {
 }
 
 if (useConfig === "server") {
-  config = "https://nagbackend.azurewebsites.net";
+  config = "https://azurenagtechbackend.azurewebsites.net";
 }
 
 if (useConfig === "ngrok") {

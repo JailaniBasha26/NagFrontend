@@ -32,9 +32,6 @@ export default function Home() {
   const dt = useRef(null);
 
   useEffect(() => {
-    // axios.get("/readStudentData").then((studentDetailsResp) => {
-    //   setStudentDetails(studentDetailsResp.data);
-    // });
     setIsLoading(true);
     fetchGridData();
   }, []);
@@ -100,9 +97,11 @@ export default function Home() {
   };
 
   const fetchGridData = () => {
-    axios.get("/readStudentData").then((studentDetailsResp) => {
-      setStudentDetails(studentDetailsResp.data);
-      setIsLoading(false);
+    axios.get("/api/getStudentData").then((studentDetailsResp) => {
+      if (studentDetailsResp.data) {
+        setStudentDetails(studentDetailsResp.data);
+        setIsLoading(false);
+      }
     });
   };
 
@@ -111,7 +110,7 @@ export default function Home() {
     if (product.id != null) {
       if (product.name.length > 0 && product.dept.length > 0) {
         setIsLoading(true);
-        axios.post("/updateStudent", product).then((response) => {
+        axios.post("/api/updateStudent", product).then((response) => {
           if (response.data) {
             fetchGridData();
             toast.current.show({
@@ -127,7 +126,7 @@ export default function Home() {
     } else {
       if (product.name.length > 0 && product.dept.length > 0) {
         setIsLoading(true);
-        axios.post("/createStudentData", product).then((response) => {
+        axios.post("/api/createStudentData", product).then((response) => {
           if (response.data) {
             fetchGridData();
             toast.current.show({
@@ -184,11 +183,12 @@ export default function Home() {
     setStudentDetails(_products);
     setDeleteProductDialog(false);
     setProduct(emptyProduct);
-
+    setIsLoading(true);
     axios
-      .delete("/deleteStudentData?id=" + product.id)
+      .delete("/api/deleteStudentData?id=" + product.id)
       .then((deleteStudentResp) => {
         if (deleteStudentResp.data) {
+          fetchGridData();
           //   toast.current.show({
           //     severity: "success",
           //     summary: "Successful",

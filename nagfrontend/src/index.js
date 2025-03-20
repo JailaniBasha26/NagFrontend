@@ -13,7 +13,7 @@ import "primeflex/primeflex.css";
 
 axios.defaults.baseURL = Config;
 // Add the `ngrok-skip-browser-warning` header to bypass the warning
-axios.defaults.headers.common["ngrok-skip-browser-warning"] = "true";
+// axios.defaults.headers.common["ngrok-skip-browser-warning"] = "true";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
