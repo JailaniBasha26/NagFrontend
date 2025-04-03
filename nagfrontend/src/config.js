@@ -6,7 +6,7 @@ if (useConfig === "dev") {
 }
 
 if (useConfig === "server") {
-  config = "https://carecollegebackend.azurewebsites.net";
+  config = "https://carecollegebackendcanadacentral.azurewebsites.net";
 }
 
 if (useConfig === "ngrok") {
